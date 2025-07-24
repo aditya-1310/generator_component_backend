@@ -6,7 +6,7 @@ const app = express();
 
 
 const router = express.Router();
-app.post('/api/generate',generateResponse );
+router.post('/',generateResponse);
 
 
 export default router
