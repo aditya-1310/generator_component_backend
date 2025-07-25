@@ -3,12 +3,13 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
-import router from './router/generateRouter.js';
+import apiRouter from './router/apirouter.js';
 
 
 
-connectDB(); // Connect to MongoDB
 
+
+dotenv.config(); // Load environment variables from .env file
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -17,13 +18,22 @@ const PORT = process.env.PORT || 5001;
 app.use(cors()); // Allows our React app to make requests to this server
 app.use(express.json()); // Allows server to accept JSON in request bodies
 
-dotenv.config(); // Load environment variables from .env file
+
 
 
 // The single endpoint we need for now
 
+app.get('/ping', (req,res)=>{
+    return res.json({message: "pong"});
+})
+
+app.use('/api', apiRouter);
+
+
+
 
 
 app.listen(PORT, () => {
+    connectDB(); // Connect to MongoDB
     console.log(`Server is running on http://localhost:${PORT}`);
 });
