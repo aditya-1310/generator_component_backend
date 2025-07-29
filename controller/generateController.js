@@ -56,7 +56,10 @@ const generateResponse = async(req, res) => {
 
     
     try {
-      const { sessionId, userPrompt } = req.body;
+      
+      const { sessionId, userPrompt } =  req.body;
+      console.log("data from the frontend is : " , sessionId, userPrompt);
+      
       const response = await handleUserMessage({ sessionId, userPrompt });
       res.status(200).json(response);
     } catch (err) {

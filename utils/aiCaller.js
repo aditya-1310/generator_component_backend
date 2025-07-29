@@ -1,17 +1,3 @@
-// utils/aiCaller.js
-
-// export default async function callAI(prompt) {
-//   // Replace with actual OpenAI call
-//   // Example using dummy response
-//   return {
-//     content: "Here is your Login form component.",
-//     component: {
-//       componentName: "LoginForm",
-//       jsx: `<div className="p-4"><input /><button>Login</button></div>`,
-//       css: `.button { color: blue; }`
-//     }
-//   };
-// }
 
 
 // utils/callAI.js
@@ -48,6 +34,18 @@ Rules:
 - Return only JSON. No extra text.
 - Ensure the JSX is valid.
 - If CSS is not needed, keep it as an empty string.
+
+- Generate a complete React component. Use only Tailwind CSS and basic React. Include:
+
+- import React from "react";
+
+- A const or function component definition
+
+- A default export: export default LoginForm;
+- Do not use require, exports, or any external packages.
+- strictly use vanil CSS do not use any library or framework
+
+
 `;
 
     // ✅ Step 2: Call Gemini

@@ -19,12 +19,37 @@ export const handleUserMessage = async ({ sessionId, userPrompt }) => {
     content: userPrompt
   });
 
-  // 2. Modify prompt for AI
-  const aiPrompt = `
-You are a helpful UI component generator.
-The user prompt is: "${userPrompt}"
+  const recentHistory = session.chatHistory.slice(-5).map(msg => {
+    return `${msg.role.toUpperCase()}: ${msg.content}`;
+  }).join('\n');
 
-Your response must follow this JSON format:
+  
+  // 2. Modify prompt for AI
+//   const aiPrompt = `
+// You are a helpful UI component generator.
+// The user prompt is: "${userPrompt}"
+
+// Your response must follow this JSON format:
+// {
+//   "content": "Explain or introduce the component.",
+//   "component": {
+//     "componentName": "YourComponentName",
+//     "jsx": "<JSX code here>",
+//     "css": "CSS code here or empty string"
+//   }
+// }
+// `;
+
+
+const aiPrompt = `
+You are a helpful UI component generator.
+
+Below is the conversation so far:
+${recentHistory}
+
+Now, the user says: "${userPrompt}"
+
+Respond with a JSON following this structure:
 {
   "content": "Explain or introduce the component.",
   "component": {
