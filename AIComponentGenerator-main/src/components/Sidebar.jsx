@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+    
+
+
 
 // SVG Icon for the logout button
 const LogoutIcon = () => (
@@ -8,14 +11,16 @@ const LogoutIcon = () => (
 );
 
 const Sidebar = ({ onNewChat, onSelectSession }) => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
     
 
     const [chatHistory, setChatHistory] = useState([]);
+    console.log("Base URL:", baseUrl);
 
   useEffect(() => {
     const fetchSessions = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/session/allSession', {
+        const response = await fetch(baseUrl+'/session/allSession', {
         //   credentials: 'include', // if cookies/session are used
         });
         const result = await response.json();

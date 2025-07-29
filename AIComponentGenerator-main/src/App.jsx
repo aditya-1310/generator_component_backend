@@ -26,7 +26,8 @@ export default function App() {
         css: ""
     });
 
-    const API_BASE_URL = baseUrl+"/api"; // adjust if needed
+    const API_BASE_URL = baseUrl;
+    // adjust if needed
     const handleNewChat = () => {
         console.log("Starting a new chat session...");
         // Here we would clear the state or create a new session via API
