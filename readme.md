@@ -9,12 +9,12 @@ AccioJob is a full-stack playground where developers can chat with an AI to spin
 ```mermaid
 %% GitHub renders Mermaid diagrams
 flowchart TD
-    subgraph Frontend \n(React + Vite)
+    subgraph Frontend["React + Vite"]
         FE[SPA – App.jsx & feature components]
         FE -->|REST| API
     end
 
-    subgraph Backend \n(Node.js + Express)
+    subgraph Backend["Node.js + Express"]
         API[Express Router /controllers] --> Service
     end
 
